@@ -1,5 +1,4 @@
-# FutureFund
-# AI-Powered Placement Risk & Salary Estimation Engine for Study Abroad Education Loans
+# FutureFund - AI-Powered Placement Risk & Salary Estimation Engine for Study Abroad Education Loans
 
 An end-to-end machine learning and credit intelligence platform designed to predict time-to-placement, estimate global post-graduation salaries, evaluate Debt-to-Income (DTI) repayment feasibility, and deliver explainable feature attribution using SHAP for education loan borrowers.
 
