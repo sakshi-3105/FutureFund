@@ -1,0 +1,19 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Data and Models
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+models/*.pkl
+models/*.joblib
+
+# OS files
+.DS_Store
