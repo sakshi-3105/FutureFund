@@ -17,6 +17,9 @@ This platform bridges that gap by:
 ---
 
 ## 🏗️ Architecture & Tech Stack
+
+```text
+.
 ├── data/
 │   └── raw/                       # Synthetic & raw student profile data
 ├── models/                        # Serialized preprocessors and GBDT artifacts (.joblib)
@@ -35,6 +38,7 @@ This platform bridges that gap by:
 │   └── package.json
 ├── requirements.txt               # Backend Python dependencies
 └── README.md
+```
 
 ### Core Technologies
 - **Machine Learning & Analytics:** Python, XGBoost, LightGBM, Scikit-Learn, Pandas, NumPy, SHAP
