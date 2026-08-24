@@ -1,6 +1,7 @@
 # api/app.py
 import sys
 import os
+from pydantic import BaseModel
 
 # Add src to python path for internal imports
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
@@ -46,3 +47,25 @@ def assess_student_risk(profile: StudentProfileRequest):
         return result
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Inference error: {str(e)}")
+    
+
+class BatchEvaluationRequest(BaseModel):
+    students: list[StudentProfileRequest]
+
+@app.post("/api/v1/predict-batch")
+def assess_batch_risk(batch: BatchEvaluationRequest):
+    if engine is None:
+        raise HTTPException(status_code=500, detail="Inference engine not loaded.")
+    
+    results = []
+    for idx, student in enumerate(batch.students):
+        eval_result = engine.predict_student(student.dict())
+        results.append({
+            "applicant_id": f"APP-{1001 + idx}",
+            "country": student.destination_country,
+            "stream": student.course_stream,
+            "loan_amount_inr": student.loan_amount_inr,
+            "expected_emi_inr": student.expected_emi_inr,
+            **eval_result
+        })
+    return results
